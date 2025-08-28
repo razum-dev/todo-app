@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Name</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 id="projectTitle">Project Name</h1>
+            <div class="header-controls">
+                <button class="icon-btn" id="addTaskBtn">➕</button>
+                <button class="icon-btn" id="themeToggle">🌙</button>
+                <button class="icon-btn" id="deleteAllBtn">🗑️</button>
+            </div>
+        </header>
+
+        <!-- Search -->
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Поиск задачи...">
+        </div>
+
+        <!-- Task List -->
+        <ul id="taskList"></ul>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Educational project for Razum</p>
+        </footer>
+    </div>
+
+    <!-- Modal для добавления задачи -->
+    <div id="addTaskModal" class="modal">
+        <div class="modal-content">
+            <h3>Добавить новую задачу</h3>
+            <input type="text" id="newTaskInput" placeholder="Введите задачу...">
+            <select id="newTaskPriority">
+                <option value="low">Низкий приоритет</option>
+                <option value="medium" selected>Средний приоритет</option>
+                <option value="high">Высокий приоритет</option>
+            </select>
+            <div class="modal-actions">
+                <button id="cancelBtn">Отмена</button>
+                <button id="confirmAddBtn">Добавить</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
