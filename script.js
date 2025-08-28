@@ -295,13 +295,18 @@ function formatDate(dateString) {
 function saveTasks() {
     const tasks = [];
     document.querySelectorAll('.task-item').forEach(taskElement => {
+        const taskId = taskElement.dataset.id;
+        const savedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+        const existingTask = savedTasks.find(task => task.id == taskId);
+        
         tasks.push({
             id: taskElement.dataset.id,
             text: taskElement.querySelector('.task-text').textContent,
             completed: taskElement.querySelector('.task-checkbox').checked,
             priority: taskElement.querySelector('.priority-dot').className.split(' ')[1].replace('priority-', ''),
-            createdAt: new Date().toISOString(),
-            number: parseInt(taskElement.querySelector('.task-number').textContent)
+            createdAt: existingTask ? existingTask.createdAt : new Date().toISOString(),
+            number: parseInt(taskElement.querySelector('.task-number').textContent),
+            deadline: existingTask ? existingTask.deadline : null // Сохраняем дедлайн
         });
     });
     localStorage.setItem('tasks', JSON.stringify(tasks));
